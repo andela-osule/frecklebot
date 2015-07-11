@@ -23,9 +23,9 @@ def subscribe():
     if request.method == 'POST':
         if request.form.get('token') == app.config['BOT_APP_OUTGOING_PAYLOAD_TOKEN']:
             store_user(request.form.get('user_id'), request.form.get('user_name'))
-            return 'Status: OK', 200
+            return jsonify(Status='OK')
         # return jsonify(request.form)
-    return 'Error: Unauthorized access'
+    return jsonify(Status='Unauthorized access')
 
 
 def store_user(user_id, user_name):
