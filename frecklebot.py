@@ -1,16 +1,13 @@
 from os import environ
 from flask import Flask, json, jsonify, request, session, redirect, url_for 
 from slacker import Slacker
-
+from botschedule import Schedule
 
 app = Flask(__name__)
 app.config.from_pyfile('settings.cfg', silent=True)
 slack = Slacker(app.config['BOT_API_TOKEN'])
-#m = slack.rtm.start()
-#m.successful
-#im = slack.im.open()
-#slack.chat.post_message(im.body['channel']['id'], 'hi there', 'frecklebot', True)
-store = open('users.lst', 'w+')
+schedule = Schedule(slack)
+store = open('users.lst', 'a+')
 store.close()
 
 @app.route('/')
@@ -37,4 +34,5 @@ def store_user(user_id, user_name):
 
 
 if __name__=='__main__':
-    app.run(debug=True) 
+    schedule.run()
+    app.run()
