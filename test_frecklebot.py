@@ -4,10 +4,11 @@ import frecklebot
 class FrecklebotTestCase(unittest.TestCase):
     """Test Frecklebot """
 def setUp(self):
-    self.app = frecklebot.app.test_client()
+    pass
 
 def test_subscribe(self):
     res = frecklebot.app.get('/')
-    print 'res'
+    self.assertEqual(res, 'Helvflo World')
+
 if __name__ == '__main__':
     unittest.main()
