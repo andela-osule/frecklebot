@@ -3,3 +3,4 @@ slack
 unnecessary_math.py, frecklebotshed.pyc
 users.lst
 frecklebotshed.py, frecklebotshed.pyc
+*.pyc
